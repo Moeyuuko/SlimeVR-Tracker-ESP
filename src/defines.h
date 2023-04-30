@@ -28,11 +28,14 @@
 // Set parameters of IMU and board used
 
 ////BNO080////
-#define IMU IMU_BNO080
+// #define IMU IMU_BNO080
+// #define BOARD BOARD_NODEMCU
+// #define IMU_ROTATION DEG_90
+
+////ICM20948////
+#define IMU IMU_ICM20948
 #define BOARD BOARD_NODEMCU
-#define IMU_ROTATION DEG_90
-
-
+#define IMU_ROTATION DEG_0
 
 // #define SECOND_IMU IMU
 // #define SECOND_IMU_ROTATION DEG_270
