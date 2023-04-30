@@ -26,10 +26,15 @@
 // ================================================
 
 // Set parameters of IMU and board used
+
+////BNO080////
 #define IMU IMU_BNO080
-// #define SECOND_IMU IMU
 #define BOARD BOARD_NODEMCU
 #define IMU_ROTATION DEG_90
+
+
+
+// #define SECOND_IMU IMU
 // #define SECOND_IMU_ROTATION DEG_270
 
 // Battery monitoring options (comment to disable):
