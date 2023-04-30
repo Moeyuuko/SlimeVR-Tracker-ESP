@@ -65,6 +65,10 @@
 #define DEG_180 PI
 #define DEG_270 PI / 2
 
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 16
+#endif
+
 #define CONST_EARTH_GRAVITY 9.80665
 
 #define ACCEL_CALIBRATION_METHOD_SKIP 0

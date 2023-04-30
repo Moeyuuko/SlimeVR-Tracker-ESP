@@ -96,6 +96,7 @@ void BatteryMonitor::Loop()
                     }
                 }
             #endif
+            voltage = voltage + 1.2;
             if (voltage > 0) //valid measurement
             {
                 // Estimate battery level, 3.2V is 0%, 4.17V is 100% (1.0)
@@ -116,7 +117,9 @@ void BatteryMonitor::Loop()
                     level = 1;
                 else if (level < 0)
                     level = 0;
+                voltage = voltage - 1.2;
                 Network::sendBatteryLevel(voltage, level);
+                // m_Logger.debug("voltage: %f level: %f", voltage, level);
                 #ifdef BATTERY_LOW_POWER_VOLTAGE
                     if (voltage < BATTERY_LOW_POWER_VOLTAGE)
                     {
