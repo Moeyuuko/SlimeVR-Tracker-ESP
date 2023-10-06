@@ -37,6 +37,26 @@
 // #define SECOND_IMU IMU
 // #define SECOND_IMU_ROTATION DEG_270
 
+#define PRIMARY_IMU_OPTIONAL false
+#define SECONDARY_IMU_OPTIONAL true
+
+#define MAX_IMU_COUNT 2
+
+// Axis mapping example
+/*
+#include "sensors/axisremap.h"
+#define BMI160_QMC_REMAP AXIS_REMAP_BUILD(AXIS_REMAP_USE_Y, AXIS_REMAP_USE_XN, AXIS_REMAP_USE_Z, \
+                                       AXIS_REMAP_USE_YN, AXIS_REMAP_USE_X, AXIS_REMAP_USE_Z)
+
+IMU_DESC_ENTRY(IMU_BMP160, PRIMARY_IMU_ADDRESS_ONE, IMU_ROTATION, PIN_IMU_SCL, PIN_IMU_SDA, BMI160_QMC_REMAP) \
+*/
+
+#ifndef IMU_DESC_LIST
+#define IMU_DESC_LIST \
+        IMU_DESC_ENTRY(IMU,        PRIMARY_IMU_ADDRESS_ONE,   IMU_ROTATION,        PIN_IMU_SCL, PIN_IMU_SDA, PRIMARY_IMU_OPTIONAL,   PIN_IMU_INT) \
+        IMU_DESC_ENTRY(SECOND_IMU, SECONDARY_IMU_ADDRESS_TWO, SECOND_IMU_ROTATION, PIN_IMU_SCL, PIN_IMU_SDA, SECONDARY_IMU_OPTIONAL, PIN_IMU_INT_2)
+#endif
+
 // Battery monitoring options (comment to disable):
 //   BAT_EXTERNAL for ADC pin, 
 //   BAT_INTERNAL for internal - can detect only low battery, 
@@ -166,4 +186,12 @@
   #define PIN_BATTERY_LEVEL 3
   #define LED_PIN LED_OFF  // RGB LED Protocol would need to be implementetet did not brother for the test, because the board ideal for tracker ifself
 //  #define LED_INVERTED false
+#elif BOARD == BOARD_WEMOSWROOM02
+  #define PIN_IMU_SDA 2
+  #define PIN_IMU_SCL 14
+  #define PIN_IMU_INT 0
+  #define PIN_IMU_INT_2 4
+  #define PIN_BATTERY_LEVEL A0
+  #define LED_PIN 16
+  #define LED_INVERTED true
 #endif
